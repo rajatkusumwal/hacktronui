@@ -1,0 +1,25 @@
+<div class="row justify-content-center mb-5">
+  <div class="col-md-5  navstyle">
+    <div class="buttonclass">
+      <button type="submit" class="btn btn-primary">Producer</button>
+      <button type="submit" class="btn btn-danger">Consumer</button>
+    </div>
+  </div>
+</div>
+  <app-queue></app-queue>
+<div class="row">
+  <ul class="list-group col-md-12" *ngFor="let a of arr">
+    <li class="list-group-item ">
+      <div class="row">
+        <div class="col">
+          {{a}}
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary ml-3" (click)="redirectToMessage()">AddMessage</button>
+          <button type="submit" class="btn btn-primary ml-3">Consume</button>
+          <button type="submit" class="btn btn-primary ml-3">Consume All</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
