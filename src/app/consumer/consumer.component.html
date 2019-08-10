@@ -1,0 +1,12 @@
+ <ul class="list-group col-md-12" *ngFor="let msg of messages">
+    <li class="list-group-item ">
+      <div class="row">
+        <div class="col">
+          {{msg.queueName}}
+        </div>
+        <div class="col">
+          {{msg.message}}
+        </div>
+      </div>
+    </li>
+  </ul>

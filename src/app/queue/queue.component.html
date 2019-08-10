@@ -6,17 +6,26 @@
 
   <div class="row justify-content-center h-100">
     <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-      <form>
+      <form [formGroup]="queueForm">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Queue Name:" />
+          <input type="text" [ngClass]="{ 'is-invalid': queuFormCtrl.queueName.dirty&&queuFormCtrl.queueName.errors }" class="form-control" placeholder="Queue Name:" formControlName="queueName"/>
+            <div *ngIf="queuFormCtrl.queueName.errors" class="invalid-feedback">
+                            <div *ngIf="queuFormCtrl.queueName.errors.required">QueueName is required</div>
+                        </div>
         </div>
          <div class="form-group">
-          <input type="number" class="form-control" placeholder="Max Limit:" />
+          <input type="number" [ngClass]="{ 'is-invalid': queuFormCtrl.maxLimit.dirty&&queuFormCtrl.maxLimit.errors }" class="form-control" placeholder="Max Limit:" formControlName="maxLimit"/>                 
+                <div *ngIf="queuFormCtrl.maxLimit.errors" class="invalid-feedback">
+            <div *ngIf="queuFormCtrl.maxLimit.errors.required">Max limit is required</div>
+               <div *ngIf="queuFormCtrl.maxLimit.errors.max">Max value is 1000</div>
+                            </div>
         </div>
+
+ 
         <div class="form-group">
           <div class="container">
             <div class="row ">
-              <div class="col"><button class="col-6 btn btn-primary btn-sm">Submit</button></div>
+              <div class="col"><button class="col-6 btn btn-primary btn-sm" [disabled]="!queueForm.valid" (click)="updateQueueList()">Submit</button></div>
             </div>
           </div>
         </div>

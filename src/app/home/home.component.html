@@ -2,7 +2,7 @@
   <div class="col-md-5  navstyle">
     <div class="buttonclass">
       <button type="submit" class="btn btn-primary">Producer</button>
-      <button type="submit" class="btn btn-danger">Consumer</button>
+      <button type="submit" class="btn btn-danger" (click)="redirectToConsumer()">Consumer</button>
     </div>
   </div>
 </div>
@@ -12,10 +12,10 @@
     <li class="list-group-item ">
       <div class="row">
         <div class="col">
-          {{a}}
+          {{a.queueName}}
         </div>
         <div class="col">
-          <button type="submit" class="btn btn-primary ml-3" (click)="redirectToMessage()">AddMessage</button>
+          <button type="submit" class="btn btn-primary ml-3" (click)="redirectToMessage(a.queueName)">AddMessage</button>
           <button type="submit" class="btn btn-primary ml-3">Consume</button>
           <button type="submit" class="btn btn-primary ml-3">Consume All</button>
         </div>
