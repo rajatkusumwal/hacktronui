@@ -20,10 +20,23 @@ export class ApiServiceService {
         return this.subject.asObservable();
     }
     addMessage(messagedetails){
-      this.messagearry.push(messagedetails);
-      this.messagesubject.next(messagedetails);
+      console.log(messagedetails);
+      if(localStorage.messages){
+        let messages = [];
+        console.log(localStorage.messages);
+       messages = JSON.parse(localStorage.messages);
+      messages.push(messagedetails);
+     localStorage.messages = JSON.stringify(messages);
+      }
+      else {
+        localStorage.messages = [];
+        let mes = [];
+        mes.push(messagedetails);
+        localStorage.messages= JSON.stringify(mes);
+         console.log(localStorage.messages);
+      }
     }
     getMessage():  Observable<any> {
-      return this.messagesubject.asObservable();
+      return localStorage.messages;
     }
 }

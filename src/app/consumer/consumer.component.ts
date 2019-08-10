@@ -6,17 +6,15 @@ import {ApiServiceService} from '../api-service.service';
   styleUrls: ['./consumer.component.css']
 })
 export class ConsumerComponent implements OnInit {
-  messages:any[] =[{queueName:"name",message:"message"}];
+  messages:any[] =[];
   constructor(private apiService:ApiServiceService) { }
 
   ngOnInit() {
-    
+    console.log(localStorage.messages);
+    this.messages = JSON.parse(localStorage.messages);
   }
-  ngAfterViewInit(){
-this.apiService.getMessage().subscribe(message => {
-     this.messages.push(message);
-      console.log(this.messages);
-    })
+  remove(msg){
+    let messagearray = JSON.parse(localStorage.messages);
+    messagearray.findIndex(m=> m.message);
   }
-
 }
